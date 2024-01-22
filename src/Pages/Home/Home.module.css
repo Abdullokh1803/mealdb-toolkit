@@ -1,0 +1,26 @@
+.home_search{
+    width: 100%;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    padding: 35px 0;
+}
+.home_search input{
+    width: 350px;
+    font-size: 15px;
+    height: 35px;
+    border-radius: 5px 0 0 5px;
+    border-left: none;
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+.home_search button{
+    background-color: #b8b8b8;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    height: 35px;
+    border: none;
+    width: 50px;
+}
