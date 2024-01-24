@@ -4,11 +4,12 @@ import MealItem from "../../Components/Meal-item";
 import List from "../../Components/List";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import PopularIngredients from "../../Components/Popular-ingredients";
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const { latest } = useSelector((state) => state.products);
+  const { latest, popular } = useSelector((state) => state.products);
 
   const handleMealInfo = (id, title) => {
     navigate(`/meal/${id}/${title}`);
@@ -35,6 +36,21 @@ const Home = () => {
                 onClick={() => handleMealInfo(elem.idMeal, elem.strMeal)}
               />
             )}
+          />
+        </div>
+      </div>
+      <div className={styles.popular}>
+        <h3>Popular Ingredients</h3>
+        <div className={styles.popular_ingredients}>
+          <List
+            items={popular}
+            renderItem={(elem, i) => {
+              if (i < 4) {
+                return (
+                  <PopularIngredients key={i} {...elem} />
+                );
+              }
+            }}
           />
         </div>
       </div>
