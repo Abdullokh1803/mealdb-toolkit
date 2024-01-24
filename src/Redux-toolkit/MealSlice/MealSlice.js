@@ -3,6 +3,7 @@ import instance from "../../http/settings";
 
 const initialState = {
   latest: [],
+  infoMeal: [],
 };
 
 export const getLatestMeal = createAsyncThunk(
@@ -27,6 +28,14 @@ export const getLatestMeal = createAsyncThunk(
     }
 )
 
+export const getInfoMeal = createAsyncThunk(
+  "infoMeal/getInfoMeal",
+  async (elem, {rejectWithValue, dispatch}) => {
+    const result = await instance.get(`lookup.php?i=${elem}`)
+    dispatch(infoIngredients(result.data.meals))
+  }
+)
+
 const mealSlice = createSlice({
   name: "products",
   initialState,
@@ -34,9 +43,12 @@ const mealSlice = createSlice({
     latestMeal: (state, action) => {
       state.latest = action.payload;
     },
+    infoIngredients: (state, action) => {
+      state.infoMeal = action.payload
+    }
   },
 });
 
-export const { latestMeal } = mealSlice.actions;
+export const { latestMeal, infoIngredients } = mealSlice.actions;
 
 export default mealSlice.reducer;

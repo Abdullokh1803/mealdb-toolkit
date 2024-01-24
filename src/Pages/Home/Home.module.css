@@ -24,3 +24,19 @@
     border: none;
     width: 50px;
 }
+
+.meal_item{
+    padding: 30px;
+
+}
+.meal_item h3 {
+    color: #fff;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    font-size: 22px;
+}
+.meal_item_content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
