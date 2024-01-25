@@ -15,6 +15,10 @@ const Home = () => {
     navigate(`/meal/${id}/${title}`);
   };
 
+  const handlePopularMeal = (title) => {
+    navigate(`/ingredient/${title}`);
+  };
+
   return (
     <div className="container">
       <form className={styles.home_search}>
@@ -47,7 +51,11 @@ const Home = () => {
             renderItem={(elem, i) => {
               if (i < 4) {
                 return (
-                  <PopularIngredients key={i} {...elem} />
+                  <PopularIngredients
+                    onClick={() => handlePopularMeal(elem.strIngredient)}
+                    key={i}
+                    {...elem}
+                  />
                 );
               }
             }}

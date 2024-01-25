@@ -40,3 +40,19 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+/* ? popular ingr*/
+
+.popular{
+    color: #fff;
+    padding: 30px 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+.popular h3{
+    text-align: center;
+}
+.popular_ingredients{
+    display: flex;
+    justify-content: space-between;
+}

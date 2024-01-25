@@ -6,6 +6,7 @@ const initialState = {
   infoMeal: [],
   popular: [],
   randomIngredient: [],
+  popularInfo: [],
 };
 
 export const getLatestMeal = createAsyncThunk(
@@ -46,6 +47,14 @@ export const getPopular = createAsyncThunk(
   }
 );
 
+export const getPopularInfo = createAsyncThunk(
+  'popularInfo/getPopularInfo',
+  async (elem, {rejectWithValue, dispatch}) => {
+    const result = await instance.get(`filter.php?i=${elem}`)
+    dispatch(popularInfoMeal(result.data.meals))
+  }
+)
+
 const mealSlice = createSlice({
   name: "products",
   initialState,
@@ -62,6 +71,9 @@ const mealSlice = createSlice({
     getRandomIngredients: (state, action) => {
       state.randomIngredient = action.payload;
     },
+    popularInfoMeal: (state, action) => {
+      state.popularInfo = action.payload
+    }
   },
 });
 
@@ -70,6 +82,7 @@ export const {
   infoIngredients,
   popularMeal,
   getRandomIngredients,
+  popularInfoMeal
 } = mealSlice.actions;
 
 export default mealSlice.reducer;
